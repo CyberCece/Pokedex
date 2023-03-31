@@ -41,9 +41,9 @@ function Pokedex() {
         <div>{poke.no}</div>  
         <div>{poke.nombre}</div>
       </div>
-      <div className = 'flex flex-row justify-center'>    
+      <div className = 'flex flex-row justify-center '>    
         <svg
-          className='w-10 ' 
+          className='w-10 cursor-pointer' 
           disabled = {prevButton}
           onClick={ () => setCurrentPoke((currentPk) =>  {
             if (currentPk === 1) {
@@ -57,16 +57,16 @@ function Pokedex() {
           fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5" />
         </svg>
-        <div>
-        <PokeTypes
-          type = {poke.type}
-        />
+        <div className='relative'>
+          <PokeTypes
+            type = {poke.type}
+          />
           <img 
-          className='border-[20px] bg-blue-300 rounded-xl rounded-bl-[100px]'
+          className='border-[20px] border-slate-50 bg-blue-300 rounded-xl rounded-bl-[100px]'
           src = {poke.sprite} alt = {poke.nombre}/>
         </div>        
         <svg
-          className='w-10' 
+          className='w-10 cursor-pointer' 
           onClick={ () => setCurrentPoke((currentPk) => {
             setPrevButton(() => {return false})
             return currentPk + 1

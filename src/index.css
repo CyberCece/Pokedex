@@ -12,6 +12,11 @@ code {
     monospace;
 } */
 
+body {
+  font-family: andale mono, monospace;
+  color: white;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
