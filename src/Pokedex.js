@@ -6,7 +6,7 @@ import PokeCharts from './components/PokeChart';
 
 function Pokedex() {
   
-  const [currentPoke, setCurrentPoke] = useState(1)
+  const [currentPoke, setCurrentPoke] = useState(387)
   const [prevButton, setPrevButton] = useState(true)
   const [poke, setPoke] = useState({})
   const [loading, setLoading] = useState(true)
@@ -37,11 +37,11 @@ function Pokedex() {
 
   return(
     <div className='flex flex-col border-8 border-red-900 bg-red-500 p-3 rounded-2xl justify-center content-center'>
-      <div className='flex flex-row justify-around'>
-        <div>{poke.no}</div>  
-        <div>{poke.nombre}</div>
+      <div className='flex text-3xl pb-3 pb flex-row  justify-around '>
+        <div className='flex p-2 text-4xl border-8 rounded-full border-slate-50 bg-cyan-500'>#{poke.no}</div>  
+        <div className='flex text-4xl pt-4 capitalize'>{poke.nombre}</div>
       </div>
-      <div className = 'flex flex-row justify-center '>    
+      <div className = 'flex pb-5 flex-row justify-center '>    
         <svg
           className='w-10 cursor-pointer' 
           disabled = {prevButton}
@@ -64,9 +64,7 @@ function Pokedex() {
           <img 
           className='border-[20px] border-slate-50 bg-blue-300 rounded-xl rounded-bl-[100px]'
           src = {poke.sprite} alt = {poke.nombre}/>
-          <PokeAbilities
-            abilities = {poke.abilities}
-          />
+          
         </div>        
         <svg
           className='w-10 cursor-pointer' 
@@ -84,9 +82,12 @@ function Pokedex() {
           stats = {poke.stats}
         /> */}
       </div>
-        <PokeCharts
-          stats = {poke.stats}
-        />
+      <PokeAbilities
+        abilities = {poke.abilities}
+      />
+      <PokeCharts
+        stats = {poke.stats}
+      />
     </div>
   );
 }

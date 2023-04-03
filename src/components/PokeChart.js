@@ -21,7 +21,7 @@ export default function PokeCharts({stats}) {
 
     return (
 
-      <ResponsiveContainer className = 'flex bg-yellow-100 border-4 border-amber-400 rounded-2xl' width="99%" aspect={3.5}>
+      <ResponsiveContainer className = 'flex pt-4 bg-yellow-100 border-4 border-amber-400 rounded-2xl' width="99%" aspect={3.5}>
         <BarChart
           width={100}
           height={100}
@@ -34,10 +34,10 @@ export default function PokeCharts({stats}) {
           }}
         >
           
-          <XAxis dataKey="name" />
+          <XAxis dataKey="name" stroke="#d97706" strokeWidth={2}/>
           <YAxis type="number" domain={[0, 120]} hide axis/>
           <Tooltip />
-          <Bar dataKey="base" fill="#fbbf24" stroke="#d97706" stroke-width="4px" stroke-linejoin="round"/>
+          <Bar dataKey="base" fill="#fbbf24" stroke="#d97706" strokeWidth={2}/>
         </BarChart>
       </ResponsiveContainer>
     );

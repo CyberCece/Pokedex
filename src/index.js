@@ -13,7 +13,7 @@ root.render(
     {/* <App /> */}
     {/* <UseEffectCopy/> */}
     {/* <UseEffect/> */}
-    <div className = 'flex justify-center py-24'>
+    <div className = 'flex justify-center py-3 '>
       <Pokedex />
     </div>
   </React.StrictMode>
