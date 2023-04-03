@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import PokeAbilities from './components/PokeAbilities';
 import PokeTypes from './components/PokeTypes';
-import PokeStats from './components/PokeStats';
+import PokeCharts from './components/PokeChart';
 
 function Pokedex() {
   
@@ -28,8 +28,8 @@ function Pokedex() {
       setLoading(false)
       setPoke(()=>{
         return pokeData
-      }) 
-      console.log(pokeData)
+      })
+
     })
   }, [currentPoke, baseUrl])
 
@@ -57,13 +57,16 @@ function Pokedex() {
           fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5" />
         </svg>
-        <div className='relative'>
+        <div className='flex flex-col relative'>
           <PokeTypes
             type = {poke.type}
           />
           <img 
           className='border-[20px] border-slate-50 bg-blue-300 rounded-xl rounded-bl-[100px]'
           src = {poke.sprite} alt = {poke.nombre}/>
+          <PokeAbilities
+            abilities = {poke.abilities}
+          />
         </div>        
         <svg
           className='w-10 cursor-pointer' 
@@ -76,13 +79,14 @@ function Pokedex() {
         </svg>
       </div> 
       <div className='flex justify-around '>
-        <PokeAbilities
-          abilities = {poke.abilities}
-        />
-        <PokeStats
+        
+        {/* <PokeStats
+          stats = {poke.stats}
+        /> */}
+      </div>
+        <PokeCharts
           stats = {poke.stats}
         />
-      </div> 
     </div>
   );
 }

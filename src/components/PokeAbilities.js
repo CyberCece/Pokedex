@@ -1,13 +1,12 @@
 import React from 'react'
 
 export default function PokeAbilities({ abilities }) {
-  console.log(abilities)
   return(
-    <div className = 'py-6'>
-      <div className='border-4 rounded-2xl border-lime-900 bg-lime-400'>
-        <div className='border-b-4 px-4 border-lime-800'>ABILITIES</div>
+    <div className = 'flex py-4'>
+      <div className='flex w-full justify-around max-h-8 px-6 flex-row border-4 rounded-2xl border-lime-900 bg-lime-400'>
+        <div className='flex'>ABILITIES >></div>
         {abilities.map(a => (
-          <div className ='capitalize px-4' key = {a.ability.name} > {a.ability.name}</div>
+          <div className ='capitalize px-3' key = {a.ability.name} > {a.ability.name}</div>
         ))}
       </div>
     </div>
