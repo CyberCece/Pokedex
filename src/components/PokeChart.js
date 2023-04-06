@@ -16,11 +16,7 @@ export default function PokeCharts({stats}) {
        name: labels[e.stat.name], 
        base: e.base_stat
       }))
-    console.log('çaca')
-    console.log(statList)
-
     return (
-
       <ResponsiveContainer className = 'flex pt-4 bg-yellow-100 border-4 border-amber-400 rounded-2xl' width="99%" aspect={3.5}>
         <BarChart
           width={100}
