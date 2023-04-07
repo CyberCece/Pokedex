@@ -126,7 +126,7 @@ function Pokedex() {
             type = {poke.type}
           />
           <img 
-          className='border-[20px] max-w-[475px] border-slate-50 bg-blue-300 rounded-xl rounded-bl-[100px]'
+          className='flex max-w-[475px] w-full border-[20px] border-slate-50 bg-blue-300 rounded-xl rounded-bl-[100px]'
           src = {poke.sprite} alt = {poke.nombre}/>
           
         </div>        
