@@ -13,7 +13,7 @@ function paddedNumber(currentNum) {
 
 export default function PokeFinder({ currentPoke, setCurrentPoke }) {
   let pokeNumber = "#" + paddedNumber(currentPoke) + currentPoke
-  if(0 > currentPoke || currentPoke > 1010) {
+  if(0 >= currentPoke || currentPoke > 1010) {
     pokeNumber = "#????"
     console.log(pokeNumber)
   } 
