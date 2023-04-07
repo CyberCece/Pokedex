@@ -4,14 +4,33 @@ import PokeAbilities from './components/PokeAbilities';
 import PokeTypes from './components/PokeTypes';
 import PokeCharts from './components/PokeChart';
 import PokeFinder from './components/PokeFinder';
+import NameFinder from './components/NameFinder';
+
+
 
 function Pokedex() {
   
   const [currentPoke, setCurrentPoke] = useState(1)
+  const [currentName, setCurrentName] = useState("bulbasaur")
   const [prevButton, setPrevButton] = useState(true)
   const [poke, setPoke] = useState({})
   const [loading, setLoading] = useState(true)
   const baseUrl = `https://pokeapi.co/api/v2/pokemon/`
+
+  useEffect(() => {
+    axios.get(baseUrl + currentName)
+    .then((response) => {
+      let pokeNo = response.data.id
+      setCurrentPoke(() => {
+        return pokeNo
+      })
+    })
+    .catch(()=>{
+      setCurrentPoke(() => {
+        return 0
+      })
+    })
+  }, [currentName, baseUrl])
 
   useEffect(() => {
     setLoading(true)
@@ -26,15 +45,17 @@ function Pokedex() {
         abilities: data.abilities,
         stats: data.stats
       }
-      setLoading(false)
       setPoke(()=>{
         return pokeData
       })
+      setCurrentName(() => {
+        return pokeData.nombre
+      })
+      
+      setLoading(false)
       
     })
-    .catch((error) => {
-      console.log("ceci al aparato")
-      console.log(error)
+    .catch(() => {
       const defStats = [
         {base_stat:6,
         stat:{name:"hp"}},
@@ -57,10 +78,14 @@ function Pokedex() {
         abilities: [{ability:{name: "Yet to be discovered"}}],
         stats: defStats
       }
-      setLoading(false)
+      setCurrentName(() => {
+        return pokeData.nombre
+      })
       setPoke(()=>{
         return pokeData
       })
+      
+      setLoading(false)
     })
   }, [currentPoke, baseUrl])
 
@@ -73,8 +98,12 @@ function Pokedex() {
         <PokeFinder
           currentPoke={currentPoke}
           setCurrentPoke={setCurrentPoke}
+        />
+        <NameFinder 
+          currentName={currentName}
+          setCurrentName={setCurrentName}
         />  
-        <div className='flex text-4xl pt-4 capitalize'>{poke.nombre}</div>
+        {/* <div className='flex text-4xl pt-4 capitalize'>{poke.nombre}</div> */}
       </div>
       <div className = 'flex pb-5 flex-row justify-center '>    
         <svg
@@ -97,7 +126,7 @@ function Pokedex() {
             type = {poke.type}
           />
           <img 
-          className='border-[20px] border-slate-50 bg-blue-300 rounded-xl rounded-bl-[100px]'
+          className='border-[20px] max-w-[475px] border-slate-50 bg-blue-300 rounded-xl rounded-bl-[100px]'
           src = {poke.sprite} alt = {poke.nombre}/>
           
         </div>        
